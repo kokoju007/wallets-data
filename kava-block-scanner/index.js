@@ -74,7 +74,6 @@ async function getTx(hash) {
 
 let list = {}, ctl = [];
 async function scanBlockchain(BLOCK_START, BLOCK_END){
-    let j = 0;
     for (let i = BLOCK_START; i > BLOCK_END ; i --) {
         console.log(`i=${i}`);
         try {
@@ -89,12 +88,8 @@ async function scanBlockchain(BLOCK_START, BLOCK_END){
         }catch (e) {
             console.log(e.toString());
         }
-        if( j === 1000 ){
-            fs.writeFileSync('../stake-kava.txt', ctl.join('\n') );
-            j = 0;
-        }
+        fs.writeFileSync('../stake-kava.txt', ctl.join('\n') );
     }
-    fs.writeFileSync('../stake-kava.txt', ctl.join('\n') );
 }
 
 async function main(){
