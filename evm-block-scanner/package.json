@@ -1,0 +1,13 @@
+{
+  "name": "block-scanner",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "web3": "^1.7.0"
+  },
+  "scripts": {
+    "test": "node bifi-max-polygon.js",
+    "live": "nodemon --exec yarn test -e js"
+  }
+}
