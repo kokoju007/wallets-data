@@ -59,7 +59,7 @@ async function getTx(hash) {
             for (let i in raw_log[j].events) {
                 const e = raw_log[j].events[i];
                 if (e.type == 'vault_deposit') {
-                    const addr = getValue(e.attributes, 'depositor');
+                    const addr = fromBech32( getValue(e.attributes, 'depositor') );
                     console.log(addr);
                     addresses.push(addr);
                 }
