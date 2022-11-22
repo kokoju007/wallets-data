@@ -93,14 +93,15 @@ async function scanBlockchain(BLOCK_START, BLOCK_END){
 }
 
 async function main(){
-    const lastBlock = await getLastBlock();
+    ctl = fs.readFileSync('../stake-kava.txt').toString().split('\n');
+    // const lastBlock = await getLastBlock();
     // await getBlock("2205145");
     // await getTx("d3df3a5951762f2a2940b2f18bcb885767ee725adfda6dc5d188f769b2180db4"); // kava
     // await getTx("8EE0EB83F47EE00812DF51321EDDC897261F39A79612F6BB995868C23EB81DC9"); // kava
     // await getTx("46EF90A1C765D20C2894332F29BE5E94798E3B0349F738FD9BE814B258AD0DD1"); // usdc
     // kava15jvpyu059s9xqs6w3sggea2j23vegyvemje0gn
     // console.log(fromBech32('kava15jvpyu059s9xqs6w3sggea2j23vegyvemje0gn'))
-    await scanBlockchain(lastBlock, 1);
+    await scanBlockchain(2078740, 1);
     // await getBlock(2272322 );
 }
 
