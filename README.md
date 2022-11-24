@@ -4,9 +4,9 @@
 
 Contains a list of addresses that made any transaction in kava from last 7 days.
 
-## bifi-max-polygon.txt
+## bifi-max-bsc.txt
 
-Contains a list of addresses that made any deposit into Bifi Max Vault at Polygon.
+Contains a list of addresses that made any deposit into Bifi Max Vault at BSC.
 
 ## stake-kava.txt
 
