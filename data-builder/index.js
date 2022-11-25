@@ -30,11 +30,11 @@ function mergeBalances(){
     fs.writeFileSync('../airdrop.txt', lines.join('\n'));
 }
 
-processFile('../addr-7days.txt', '375');
-processFile('../stake-kava-unique.txt', '325');
-processFile('../velo-vest-op.txt', '310');
-processFile('../bifi-max-bsc.txt', '300');
-processFile('../curve-lock-eth.txt', '250');
+processFile('../addr-7days.txt', '5555');
+processFile('../stake-kava-unique.txt', '500');
+processFile('../velo-vest-op.txt', '435');
+processFile('../bifi-max-bsc.txt', '425');
+processFile('../curve-lock-eth.txt', '300');
 
 mergeBalances();
 
