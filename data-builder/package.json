@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@openzeppelin/merkle-tree": "^1.0.1",
     "web3": "^1.8.1"
   }
 }

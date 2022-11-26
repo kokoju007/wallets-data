@@ -1,5 +1,20 @@
 # Airdrop
 
+Merkle Root: `0x65e546ef767c6b0ed0a8bb47201093fe37dcf19e68417118219502f37b623ee3`
+
+# bsc testnet Vara contracts:
+
+Vara: `0x9eEba993Eafb39608Ee9d8d27d2662BCD54Ed77C`
+MerkleClaim: `0xd0cd9185e8dEdb2B4Ef54921d703a6EEdD069824`
+
+## airdrop.txt
+
+Contains all addresses and values in wei eligible to claim the airdrop.
+
+## airdrop-merkletree.json
+
+The MerkleTree dump to be used in dapps.
+
 ## addr-7days.txt
 
 Contains a list of addresses that made any transaction in kava from last 7 days.
@@ -8,6 +23,6 @@ Contains a list of addresses that made any transaction in kava from last 7 days.
 
 Contains a list of addresses that made any deposit into Bifi Max Vault at BSC.
 
-## stake-kava.txt
+## stake-kava-unique.txt
 
 Contains a list of addresses that staked into Kava network.
