@@ -90,7 +90,7 @@ async function connect() {
                 const r = CONTRACTS[chainId];
                 chainsNames.push(r.label);
             }
-            const errmsg = `Error: the chain ${srcChainId} is not supported by XEX Crypto. Supported chains are: ` + chainsNames.join(', ');
+            const errmsg = `Error: the chain ${srcChainId} is not supported by Vara. Supported chains are: ` + chainsNames.join(', ');
             $('#global_alert').html(errmsg);
             $('#global_alert').show();
         } else {
