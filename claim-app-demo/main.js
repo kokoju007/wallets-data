@@ -1,18 +1,18 @@
 'use strict';
+const API = 'https://xen.bitdeep.dev';
 const CONTRACTS = {
     97: {
-        contract: "0xd0cd9185e8dEdb2B4Ef54921d703a6EEdD069824",
-        token: "0x9eEba993Eafb39608Ee9d8d27d2662BCD54Ed77C",
+        contract: "0xE2a305cc388be1D609bF62c28BfE2525D74dbCb9",
+        token: "0xd1e6482EC290771429D6AfF80F711E76d8A4fcE5",
         label: "BSC (testnet)",
         currency: "tBNB",
-        factory: "0xF7eA8401C90c84451F5C83b33ab9061AAf64AE2F",
         rpc: "https://data-seed-prebsc-1-s3.binance.org:8545",
         explorer: "https://testnet.bscscan.com"
     }
 };
 
-let web3, account, src, factory, CONTRACT;
-let globalMintInfo, srcChainId, fee;
+let web3, account, src, CONTRACT, srcChainId;
+let MerkleTreeData;
 
 let currentPage;
 
@@ -27,45 +27,6 @@ async function show_connect() {
     showPage('area_connect');
 }
 
-async function switch_network(_id) {
-    $('#global_alert').hide();
-    const CONTRACT = CONTRACTS[_id];
-    if( ! web3 ){
-        web3 = new Web3(window.ethereum);
-    }
-    const id = web3.utils.toHex(_id);
-    try {
-        await window.ethereum.request({
-            method: 'wallet_switchEthereumChain',
-            params: [{chainId: id}]
-        });
-        await connect();
-    } catch (e) {
-        if (e.code === 4902) {
-            try {
-                await ethereum.request({
-                    method: 'wallet_addEthereumChain',
-                    params: [{
-                        chainId: id,
-                        chainName: CONTRACT.label,
-                        rpcUrl: [CONTRACT.rpc],
-                        nativeCurrency: {name: CONTRACT.currency, symbol: CONTRACT.currency, decimals: 18},
-                        blockExplorerUrls: [CONTRACT.explorer]
-                    }],
-                });
-                await connect();
-            } catch (addError) {
-                const errmsg = addError.toString();
-                $('#global_alert').html(errmsg);
-                $('#global_alert').show();
-            }
-        } else {
-            const errmsg = e.toString();
-            $('#global_alert').html(errmsg);
-            $('#global_alert').show();
-        }
-    }
-}
 async function app_connect(){
     await connect();
     await show_dashboard();
@@ -100,7 +61,6 @@ async function connect() {
             $('#area_connect_text').html(errmsg);
             $('#area_connect_text').show();
             await initContract();
-            await sync_footer();
         }
     } else {
         const errmsg = `<div class="alert alert-danger" role="alert">
@@ -112,12 +72,74 @@ async function connect() {
     }
 }
 
+
+let airdropData;
 async function show_dashboard() {
     if (!account) return alert(`You are not connected. Connect your wallet first.`);
+    $('#btn-claim').hide();
     showPage('area_dashboard');
     // ---
-    const globalRank = (await src.methods.globalRank().call()).toString();
-    $('#dashboard_global_rank').html(globalRank);
+
+    $('#global_alert').html(`Checking if ${account} is eligible...`);
+    $('#global_alert').show();
+
+    // account = '0x22510fe99f63ae03ba792c21a29ec10fd87cae08';
+    let res = await fetch(`${API}/proof/${account}`);
+    airdropData = await res.json();
+
+    console.log('airdropData', airdropData);
 
 
+
+    if( ! airdropData.value ){
+        $('#global_alert').html(`Account ${account} not eligible for claiming the airdrop.`);
+    }else{
+        const v = web3.utils.fromWei(airdropData.value);
+        $('#global_alert').html(`Account ${account} eligible for claiming ${v} VARA. Checking if already claimed...`);
+        const hasClaimed = await src.methods.hasClaimed(account).call();
+        if( hasClaimed === true ){
+            $('#global_alert').html(`Account ${account} already claimed the airdrop. Thank you.`);
+        }else{
+            $('#global_alert').html(`Account ${account} eligible for claiming the airdrop of ${v} VARA.`);
+            $('#btn-claim').show();
+        }
+    }
+
+}
+
+
+async function initContract() {
+    if (!CONTRACT) {
+        let chainsNames = [];
+        for (let chainId in CONTRACTS) {
+            const r = CONTRACTS[chainId];
+            chainsNames.push(r.label);
+        }
+        let warningHtml = 'Error: chain not supported. Supported chains are: ' + chainsNames.join(', ');
+        $('#global_alert').html(warningHtml);
+        $('#global_alert').show();
+        return;
+    }
+    $('#global_alert').hide();
+    src = new web3.eth.Contract(abi_merkleclaim, CONTRACT.contract);
+    const proof = (await src.methods.merkleRoot().call());
+    console.log('proof', proof);
+}
+
+async function claim(){
+    try {
+        console.log(account, airdropData.value, airdropData.proof);
+        await src.methods.claim(airdropData.value, airdropData.proof
+        ).estimateGas({from: account},
+            async function (error, gasAmount) {
+                if (error) {
+                    alert(error.toString());
+                } else {
+                    await src.methods.claim(airdropData.value, airdropData.proof).send({from: account});
+                    await show_dashboard();
+                }
+            });
+    } catch (e) {
+        alert(e.toString());
+    }
 }

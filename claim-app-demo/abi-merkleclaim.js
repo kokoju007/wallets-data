@@ -3,7 +3,7 @@ const abi_merkleclaim = [
         "inputs": [
             {
                 "internalType": "address",
-                "name": "_velo",
+                "name": "_vara",
                 "type": "address"
             },
             {
@@ -49,11 +49,6 @@ const abi_merkleclaim = [
     },
     {
         "inputs": [
-            {
-                "internalType": "address",
-                "name": "to",
-                "type": "address"
-            },
             {
                 "internalType": "uint256",
                 "name": "amount",

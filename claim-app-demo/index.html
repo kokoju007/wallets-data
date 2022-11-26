@@ -39,11 +39,11 @@
 
         <div class="h-100 d-flex align-items-center justify-content-center">
             <div style="text-align: center;">
-                <h1>Vara Token</h1>
+                <h1>Vara Airdrop</h1>
                 <br/>
                 <br/>
                 <div class="alert alert-warning" role="alert">
-                    Please connect Web3 wallet to interact with Vara
+                    Please connect Web3 wallet to interact with Vara Airdrop
                 </div>
                 <br/>
                 <br/>
@@ -53,17 +53,8 @@
         </div>
 
     </div>
-    <div class="row" id="area_dashboard" style="display:none;margin-top:8em">
-        <h3>Claim</h3>
-        <div class="card" style="width: 18rem;">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Global Rank: <span id="dashboard_global_rank">-</span></li>
-                <li class="list-group-item">Active Minters: <span id="dashboard_active_minters">-</span></li>
-                <li class="list-group-item">Active Stakes: <span id="dashboard_active_stakers">-</span></li>
-                <li class="list-group-item">Time Since Genesis: <span id="dashboard_time_since_genesis">-</span>
-                </li>
-            </ul>
-        </div>
+    <div class="row m-1" id="area_dashboard" style="display:none;">
+        <button type="button" id="btn-claim" class="btn btn-success" onclick="claim()">Claim</button>
     </div>
 
 </div>
