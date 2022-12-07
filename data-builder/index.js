@@ -36,11 +36,10 @@ function mergeBalances() {
     fs.writeFileSync("../airdrop-merkletree.json", JSON.stringify(tree.dump()));
 }
 
-processFile('../addr-7days.txt', '5555');
-processFile('../stake-kava-unique.txt', '500');
-processFile('../velo-vest-op.txt', '435');
-processFile('../bifi-max-bsc.txt', '425');
-processFile('../curve-lock-eth.txt', '300');
+processFile('../addr-7days.txt', '450');
+processFile('../stake-kava-unique.txt', '420');
+processFile('../velo-vest-op.txt', '360');
+processFile('../bifi-max-bsc.txt', '360');
 
 mergeBalances();
 

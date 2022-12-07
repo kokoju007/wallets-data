@@ -1,13 +1,13 @@
 'use strict';
 const API = 'https://xen.bitdeep.dev';
 const CONTRACTS = {
-    97: {
-        contract: "0xE2a305cc388be1D609bF62c28BfE2525D74dbCb9",
-        token: "0xd1e6482EC290771429D6AfF80F711E76d8A4fcE5",
-        label: "BSC (testnet)",
-        currency: "tBNB",
-        rpc: "https://data-seed-prebsc-1-s3.binance.org:8545",
-        explorer: "https://testnet.bscscan.com"
+    2221: {
+        contract: "0x9A9d8b2676D6D35f55Ea31912EB36E5Adb92ed88",
+        token: "0x88B31C3E68555e61fc348420c163011f27A363a8",
+        label: "KAVA (testnet)",
+        currency: "tKAVA",
+        rpc: "https://evm.testnet.kava.io",
+        explorer: "https://explorer.testnet.kava.io"
     }
 };
 
