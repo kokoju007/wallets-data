@@ -16,6 +16,19 @@ let MerkleTreeData;
 
 let currentPage;
 
+async function connect_wallet(){
+
+    console.log('connect_wallet')
+
+    if (window.ethereum) {    
+        await window.ethereum.request({method: 'eth_requestAccounts'});    
+        window.web3 = new Web3(window.ethereum);    
+        return true;  
+    }  
+    
+    return false;
+}
+
 function showPage(id) {
     currentPage = id;
     $('#area_connect').hide();
@@ -24,7 +37,8 @@ function showPage(id) {
 }
 
 async function show_connect() {
-    showPage('area_connect');
+    //showPage('area_connect');
+    connect_wallet();
 }
 
 async function app_connect(){
@@ -32,6 +46,7 @@ async function app_connect(){
     await show_dashboard();
 }
 async function connect() {
+
     if (window.ethereum) {
         const r = await window.ethereum.request({method: "eth_requestAccounts"});
         web3 = new Web3(window.ethereum);
@@ -63,12 +78,14 @@ async function connect() {
             await initContract();
         }
     } else {
+
         const errmsg = `<div class="alert alert-danger" role="alert">
                             Error: metamask not detected.
                             </div>`;
         $('#area_connect_text').html(errmsg);
 
         await show_connect();
+
     }
 }
 
