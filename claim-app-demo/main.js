@@ -13,31 +13,27 @@ const CONTRACTS = {
 
 let web3, account, src, CONTRACT, srcChainId;
 let MerkleTreeData;
-
 let currentPage;
 
 async function connect_wallet(){
-
-    console.log('connect_wallet')
+                
+    $('#claim_button').children().hide();
 
     if (window.ethereum) {    
         await window.ethereum.request({method: 'eth_requestAccounts'});    
         window.web3 = new Web3(window.ethereum);    
+        
+        $('#connect_button').children().hide();        
+        $('#claim_button').children().show();      
+        
         return true;  
     }  
-    
+            
     return false;
 }
 
-function showPage(id) {
-    currentPage = id;
-    $('#area_connect').hide();
-    $('#area_dashboard').hide();
-    $(`#${id}`).show();
-}
 
-async function show_connect() {
-    //showPage('area_connect');
+async function show_connect() {    
     connect_wallet();
 }
 
@@ -92,10 +88,16 @@ async function connect() {
 
 let airdropData;
 async function show_dashboard() {
-    if (!account) return alert(`You are not connected. Connect your wallet first.`);
-    $('#btn-claim').hide();
-    showPage('area_dashboard');
-    // ---
+
+    if (!account){
+        
+        $('#claim_button').children().hide();        
+        $('#connect_button').children().show();        
+
+        return alert(`You are not connected. Connect your wallet first.`);
+    } 
+    
+    showPage('area_dashboard');    
 
     $('#global_alert').html(`Checking if ${account} is eligible...`);
     $('#global_alert').show();
@@ -106,19 +108,18 @@ async function show_dashboard() {
 
     console.log('airdropData', airdropData);
 
-
-
     if( ! airdropData.value ){
         $('#global_alert').html(`Account ${account} not eligible for claiming the airdrop.`);
     }else{
         const v = web3.utils.fromWei(airdropData.value);
         $('#global_alert').html(`Account ${account} eligible for claiming ${v} VARA. Checking if already claimed...`);
         const hasClaimed = await src.methods.hasClaimed(account).call();
+        
         if( hasClaimed === true ){
             $('#global_alert').html(`Account ${account} already claimed the airdrop. Thank you.`);
+
         }else{
-            $('#global_alert').html(`Account ${account} eligible for claiming the airdrop of ${v} VARA.`);
-            $('#btn-claim').show();
+            $('#global_alert').html(`Account ${account} eligible for claiming the airdrop of ${v} VARA.`);                 
         }
     }
 
@@ -156,7 +157,9 @@ async function claim(){
                     await show_dashboard();
                 }
             });
-    } catch (e) {
-        alert(e.toString());
+    } catch (e) {        
+        alert("Error: Not possible to claim, please contact us")
     }
 }
+
+
