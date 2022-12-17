@@ -27,7 +27,7 @@ async function connect_wallet(){
         $('#claim_button').children().show();      
         
         return true;  
-    }  
+    }      
             
     return false;
 }
