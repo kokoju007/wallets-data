@@ -10,12 +10,11 @@
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-
+            crossorigin="anonymous"></script>                
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" crossorigin="anonymous"
             referrerpolicy="no-referrer"></script>
@@ -24,40 +23,159 @@
     <script src="abi-merkleclaim.js?v1"></script>
     <script src="main.js?v3"></script>
 
+    <style>
+
+        .fa:hover {
+            opacity: 0.7;
+        }
+              
+        @font-face {
+            font-family: 'Arista';
+            src: url('public/Arista-Pro-Alternate-Light-trial.tff');
+        }
+
+        @font-face {
+            font-family: 'Righteous';
+            src: url('public/Righteous-Regular.ttf');
+        }
+                
+    </style>
+
+
+    <script>
+
+        var countDownDate = new Date("Jan 5, 2023 15:37:25").getTime();        
+                
+        var x = setInterval(function() {
+                  
+          var now = new Date().getTime();
+                  
+          var distance = countDownDate - now;
+                  
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                  
+          document.getElementById("clock").innerHTML = days + ":" + hours + ":"
+          + minutes + ":" + seconds;
+                  
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("clock").innerHTML = "Airdrop finished";
+          }
+        }, 1000);
+
+    </script>    
 
 </head>
-<body onload="show_connect()">
+<body onload="show_connect()" 
+    style="
+    background: url('public/Backgroun_con_Vieta.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+">
 
-<div class="container">
+<div class="container py-3 my-3">    
+        
+        <div class="row">
+            
+            <div class="col-4">
+                <img src="public/Logo.png" alt="Équilibre" width="50%" style="margin-top: 10%;"/>    
+            </div>    
 
-    <div id="global_alert" style="display:none" class="m-1 alert alert-danger" role="alert">
-        Wait...
-    </div>
+            <div class="col-8">
 
-    <div class="row" id="area_connect" style="display:none;margin-top:8em;">
-
-
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div style="text-align: center;">
-                <h1>Vara Airdrop</h1>
-                <br/>
-                <br/>
-                <div class="alert alert-warning" role="alert">
-                    Please connect Web3 wallet to interact with Vara Airdrop
-                </div>
-                <br/>
-                <br/>
-                <hr/>
-                <button type="button" class="btn btn-success" onclick="app_connect()">Connect</button>
             </div>
+
         </div>
 
-    </div>
-    <div class="row m-1" id="area_dashboard" style="display:none;">
-        <button type="button" id="btn-claim" class="btn btn-success" onclick="claim()">Claim</button>
-    </div>
+        <div class="h-100 d-flex align-items-center justify-content-center row">
 
-</div>
+            <div class="col-6 mb-0 font-weight-bold text-white">
+
+                <h1 style="font-size: 64px; font-weight: 700; letter-spacing: 0.1em;">VARA airdrop</h1>        
+                <h1 style="font-size: 64px; font-weight: 700; letter-spacing: 5px;">Is coming soon</h1>       
+                <p style="font-size: 24px;">Check <a href="https://docs.google.com/spreadsheets/d/1gZw9xkQzEND_CSTTvuYzMXmrbZf16FkwtujM-CNDOkc/edit#gid=0" style="color: #924C91">here</a> if your wallet meets the conditions</p>                    
+                
+                <p style="font-size: 24px; font-weight: 700; letter-spacing: 0.1em; color: #FFBD59" id="global_alert"></p>
+
+
+
+                <div class="col-12 d-flex align-items-center justify-content-start container  mt-10" style="right: 20px">
+
+                    <a href="https://linktr.ee/equilibrefinance">
+                        <img src="public/Linktree_icon.svg" alt="Équilibre"/>    
+                    </a>                    
+
+                    <a href="https://www.equilibrefinance.com/swap" class="pl-3">
+                        <img src="public/Vara.png" alt="Équilibre"  height="50px" />    
+                    </a>                    
+
+                </div>    
+                                                           
+            </div>
+          
+            <div class="col-6">
+                
+                <div class="row">
+
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <img src="public/Airdrop_2.png" style="margin-top: 10%;" alt="Responsive Image" width="50%" height="85%"/>
+                    </div>
+
+                    <div class="col-12 text-white shadow p-5 text-center" style="font-family: Righteous; border-bottom: 1px solid white; letter-spacing: 0.1em;">
+                        
+                        <h1 style="font-size: 64px" id="clock"></h1>                    
+
+                        <ul class="list-inline mb-15">
+
+                            <li class="list-inline-item p-2">
+                                <h5 style="color: #70DD88">Days</h5>
+                            </li>
+                            <li class="list-inline-item p-2">
+                                <h5 style="color: #70DD88">Hours</h5>
+                            </li>
+                            <li class="list-inline-item p-2">
+                                <h5 style="color: #70DD88">Min</h5>
+                            </li>
+                            <li class="list-inline-item p-2">
+                                <h5 style="color: #70DD88">Sec</h5>
+                            </li>
+                        </ul>
+
+                    </div>
+                    
+                </div>
+
+
+                <div class="row mt-15">
+
+                    <div class="col-12 d-flex align-items-center justify-content-center container" onclick="app_connect()" id="connect_button" name="connect_button">
+                        <img src="public/Barra_boton.png" width="80%"/>
+                        <div style="letter-spacing: 0.1em; color: #0D142E; font-weight: bold; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Connect Wallet</div>
+                    </div>
+    
+                    <div class="col-12 d-flex align-items-center justify-content-center container" onclick="claim()" id="claim_button" name="claim_button">                    
+                        <img src="public/Barra_boton.png" width="80%"/>
+                        <div style="letter-spacing: 0.1em; color: #0D142E; font-weight: bold; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Claim</div>
+                    </div>
+
+                </div>                                                                            
+
+            </div>
+
+
+        </div>
+
+        
+
+     </div>
+
+
+    </div>
 
 </body>
 </html>
