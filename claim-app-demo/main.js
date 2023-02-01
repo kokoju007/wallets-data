@@ -2,7 +2,7 @@
 const API = 'https://xen.bitdeep.dev';
 const CONTRACTS = {
     2221: {
-        contract: "0x9A9d8b2676D6D35f55Ea31912EB36E5Adb92ed88",
+        contract: "0xE935526A8F9B73b4664d5eFcfC6281510dc6a66a",
         token: "0x88B31C3E68555e61fc348420c163011f27A363a8",
         label: "KAVA (testnet)",
         currency: "tKAVA",
