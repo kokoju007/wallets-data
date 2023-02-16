@@ -44,7 +44,7 @@
 
     <script>
 
-        var countDownDate = new Date("Jan 5, 2023 15:37:25").getTime();        
+        var countDownDate = new Date("Feb 22, 2023 23:59:59").getTime();        
                 
         var x = setInterval(function() {
                   
@@ -57,7 +57,7 @@
           var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
           var seconds = Math.floor((distance % (1000 * 60)) / 1000);
                   
-          document.getElementById("clock").innerHTML = days + ":" + hours + ":"
+          document.getElementById("clock").innerHTML = days + " " + hours + ":"
           + minutes + ":" + seconds;
                   
           if (distance < 0) {
@@ -110,7 +110,7 @@
                         <img src="public/Linktree_icon.svg" alt="Équilibre"/>    
                     </a>                    
 
-                    <a href="https://www.equilibrefinance.com/swap" class="pl-3">
+                    <a href="https://testnet.equilibrefinance.com/" class="pl-3">
                         <img src="public/Vara.png" alt="Équilibre"  height="50px" />    
                     </a>                    
 
@@ -155,12 +155,12 @@
 
                     <div class="col-12 d-flex align-items-center justify-content-center container" onclick="app_connect()" id="connect_button" name="connect_button">
                         <img src="public/Barra_boton.png" width="80%"/>
-                        <div style="letter-spacing: 0.1em; color: #0D142E; font-weight: bold; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Connect Wallet</div>
+                        <div style="cursor: pointer; letter-spacing: 0.1em; color: #0D142E; font-weight: bold; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Connect Wallet</div>
                     </div>
     
                     <div class="col-12 d-flex align-items-center justify-content-center container" onclick="claim()" id="claim_button" name="claim_button">                    
                         <img src="public/Barra_boton.png" width="80%"/>
-                        <div style="letter-spacing: 0.1em; color: #0D142E; font-weight: bold; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Claim</div>
+                        <div style="cursor: pointer; letter-spacing: 0.1em; color: #0D142E; font-weight: bold; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Claim</div>
                     </div>
 
                 </div>                                                                            
