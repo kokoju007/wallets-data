@@ -1,7 +1,7 @@
 'use strict'
 const fs = require('fs');
 
-const contractAddress = '0x8DF9AdCF8d19f3E6013D567a650755Cf28fBfa80';
+const contractAddress = '0xa8B1E1B4333202355785C90fB434964046ef2E64';
 let BLOCK_START = 3506420, BLOCK_END;
 const rpcArchive = 'https://evm.testnet.kava.io';
 

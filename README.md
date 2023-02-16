@@ -4,8 +4,8 @@ Merkle Root: `0x66734e7e3a2528b9a170c43d7413392ae1462d9c07392d4261924c047cc3d97d
 
 # bsc testnet Vara contracts:
 
-Vara: `0x9eEba993Eafb39608Ee9d8d27d2662BCD54Ed77C`
-MerkleClaim: `0xd0cd9185e8dEdb2B4Ef54921d703a6EEdD069824`
+Vara: `0x671051f3cACA8e6eA4022c82761D3dc04156BC23`
+MerkleClaim: `0x6C54e61E0295b6f22d8F91CEd5ddE712f2061eE0`
 
 ## airdrop.txt
 
