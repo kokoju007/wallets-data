@@ -2,7 +2,7 @@
 const fs = require('fs');
 
 const contractAddress = '0xa8B1E1B4333202355785C90fB434964046ef2E64';
-let BLOCK_START = 3506420, BLOCK_END;
+let BLOCK_START = 3911420, BLOCK_END;
 const rpcArchive = 'https://evm.testnet.kava.io';
 
 
@@ -44,7 +44,7 @@ async function scanBlockchain(start, end) {
             console.log(e.toString());
         }
     }
-    fs.writeFileSync('../voter-user-vote.txt', address.join('\n'));
+    fs.writeFileSync('../testnet-v1-list.txt', address.join('\n'));
 }
 
 async function main() {
