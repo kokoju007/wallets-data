@@ -1,11 +1,6 @@
 # Airdrop
 
-Merkle Root: `0x66734e7e3a2528b9a170c43d7413392ae1462d9c07392d4261924c047cc3d97d`
-
-# bsc testnet Vara contracts:
-
-Vara: `0x671051f3cACA8e6eA4022c82761D3dc04156BC23`
-MerkleClaim: `0x6C54e61E0295b6f22d8F91CEd5ddE712f2061eE0`
+Merkle Root: `0x6362f8fcdd558ac55b3570b67fdb1d1673bd01bd53302e42f01377f102ac80a9`
 
 ## airdrop.txt
 

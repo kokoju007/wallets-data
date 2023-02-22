@@ -40,6 +40,7 @@ processFile('../addr-7days.txt', '450');
 processFile('../stake-kava-unique.txt', '420');
 processFile('../velo-vest-op.txt', '360');
 processFile('../bifi-max-bsc.txt', '360');
+processFile('../testnet-v1-list.txt', '10');
 
 mergeBalances();
 
