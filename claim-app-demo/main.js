@@ -1,5 +1,5 @@
 "use strict";
-const API = "https://apiairdrop.equilibrefinance";
+const API = "https://apiairdrop.equilibrefinance.com/";
 const CONTRACTS = {
   // 2221: {
   //   contract: "0x80380F7EaCBC929E83414b59ccF1393430FF74E2",
