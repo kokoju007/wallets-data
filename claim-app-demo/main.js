@@ -161,9 +161,7 @@ async function initContract() {
 
 async function claim() {
   try {
-
-    console.log(account, airdropData.value, airdropData.proof);
-
+    
     await src.methods
       .claim(airdropData.value, airdropData.proof)
       .estimateGas({ from: account }, async function (error, gasAmount) {
