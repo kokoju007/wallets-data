@@ -182,3 +182,5 @@ async function claim() {
     alert("Error: Not possible to claim, please contact us");
   }
 }
+
+app_connect();
