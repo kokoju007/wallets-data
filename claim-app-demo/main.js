@@ -48,7 +48,7 @@ async function app_connect() {
   console.log('app_connect')
 
   await connect();
-  await show_dashboard();
+  
 }
 
 
@@ -83,7 +83,9 @@ async function connect() {
                             </div>`;
       $("#area_connect_text").html(errmsg);
       $("#area_connect_text").show();
+      
       await initContract();
+      
     }
   } else {
     const errmsg = `<div class="alert alert-danger" role="alert">
@@ -155,6 +157,8 @@ async function initContract() {
 
   const proof = await src.methods.merkleRoot().call();
   console.log("proof", proof);
+
+  await show_dashboard();
 }
 
 async function claim() {
@@ -174,6 +178,7 @@ async function claim() {
       });
   } catch (e) {    
 
+    console.log(e);
     alert("Error: Not possible to claim, please contact us");
   }
 }
