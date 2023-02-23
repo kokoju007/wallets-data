@@ -1,13 +1,21 @@
 "use strict";
-const API = "https://xen.bitdeep.dev";
+const API = "https://apiairdrop.equilibrefinance";
 const CONTRACTS = {
-  2221: {
-    contract: "0x80380F7EaCBC929E83414b59ccF1393430FF74E2",
+  // 2221: {
+  //   contract: "0x80380F7EaCBC929E83414b59ccF1393430FF74E2",
+  //   token: "0x671051f3cACA8e6eA4022c82761D3dc04156BC23",
+  //   label: "KAVA (testnet)",
+  //   currency: "tKAVA",
+  //   rpc: "https://evm.testnet.kava.io",
+  //   explorer: "https://explorer.testnet.kava.io",
+  // },
+  2222: {
+    contract: "0xa77B82fDe72737EA659108f0fB10996CD3BE2987",
     token: "0x671051f3cACA8e6eA4022c82761D3dc04156BC23",
-    label: "KAVA (testnet)",
-    currency: "tKAVA",
-    rpc: "https://evm.testnet.kava.io",
-    explorer: "https://explorer.testnet.kava.io",
+    label: "KAVA",
+    currency: "KAVA",
+    rpc: "https://evm.kava.io",
+    explorer: "https://explorer.kava.io",
   },
 };
 
