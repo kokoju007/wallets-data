@@ -44,6 +44,9 @@ async function show_connect() {
 }
 
 async function app_connect() {
+
+  console.log('app_connect')
+
   await connect();
   await show_dashboard();
 }
@@ -98,6 +101,9 @@ async function show_dashboard() {
 
     return alert(`You are not connected. Connect your wallet first.`);
   }
+
+
+  console.log('show_dashboard')
 
   showPage("area_dashboard");
 
@@ -155,11 +161,14 @@ async function initContract() {
 
 async function claim() {
   try {
+
     console.log(account, airdropData.value, airdropData.proof);
+
     await src.methods
       .claim(airdropData.value, airdropData.proof)
       .estimateGas({ from: account }, async function (error, gasAmount) {
         if (error) {
+          console.log('Error gas', error.toString())
           alert(error.toString());
         } else {
           await src.methods
@@ -169,6 +178,10 @@ async function claim() {
         }
       });
   } catch (e) {
+    
+    console.log('Error:')
+    console.log(e)
+
     alert("Error: Not possible to claim, please contact us");
   }
 }
