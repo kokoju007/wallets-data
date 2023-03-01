@@ -1,13 +1,21 @@
 "use strict";
-const API = "https://xen.bitdeep.dev";
+const API = "https://apiairdrop.equilibrefinance.com";
 const CONTRACTS = {
-  2221: {
-    contract: "0x80380F7EaCBC929E83414b59ccF1393430FF74E2",
-    token: "0x671051f3cACA8e6eA4022c82761D3dc04156BC23",
-    label: "KAVA (testnet)",
-    currency: "tKAVA",
-    rpc: "https://evm.testnet.kava.io",
-    explorer: "https://explorer.testnet.kava.io",
+  // 2221: {
+  //   contract: "0x80380F7EaCBC929E83414b59ccF1393430FF74E2",
+  //   token: "0x671051f3cACA8e6eA4022c82761D3dc04156BC23",
+  //   label: "KAVA (testnet)",
+  //   currency: "tKAVA",
+  //   rpc: "https://evm.testnet.kava.io",
+  //   explorer: "https://explorer.testnet.kava.io",
+  // },
+  2222: {
+    contract: "0xa77B82fDe72737EA659108f0fB10996CD3BE2987",
+    token: "0xE1da44C0dA55B075aE8E2e4b6986AdC76Ac77d73",
+    label: "VARA",
+    currency: "VARA",
+    rpc: "https://evm.kava.io",
+    explorer: "https://explorer.kava.io",
   },
 };
 
@@ -36,9 +44,14 @@ async function show_connect() {
 }
 
 async function app_connect() {
+
+  console.log('app_connect')
+
   await connect();
-  await show_dashboard();
+  
 }
+
+
 async function connect() {
   if (window.ethereum) {
     const r = await window.ethereum.request({ method: "eth_requestAccounts" });
@@ -70,7 +83,9 @@ async function connect() {
                             </div>`;
       $("#area_connect_text").html(errmsg);
       $("#area_connect_text").show();
+      
       await initContract();
+      
     }
   } else {
     const errmsg = `<div class="alert alert-danger" role="alert">
@@ -89,18 +104,14 @@ async function show_dashboard() {
     $("#connect_button").children().show();
 
     return alert(`You are not connected. Connect your wallet first.`);
-  }
-
-  showPage("area_dashboard");
+  }  
 
   $("#global_alert").html(`Checking if ${account} is eligible...`);
   $("#global_alert").show();
 
   // account = '0x22510fe99f63ae03ba792c21a29ec10fd87cae08';
   let res = await fetch(`${API}/proof/${account}`);
-  airdropData = await res.json();
-
-  console.log("airdropData", airdropData);
+  airdropData = await res.json();  
 
   if (!airdropData.value) {
     $("#global_alert").html(
@@ -125,7 +136,8 @@ async function show_dashboard() {
   }
 }
 
-async function initContract() {
+async function initContract() {  
+  
   if (!CONTRACT) {
     let chainsNames = [];
     for (let chainId in CONTRACTS) {
@@ -141,17 +153,21 @@ async function initContract() {
   }
   $("#global_alert").hide();
   src = new web3.eth.Contract(abi_merkleclaim, CONTRACT.contract);
+  console.log('src ', src)
+
   const proof = await src.methods.merkleRoot().call();
   console.log("proof", proof);
+
+  await show_dashboard();
 }
 
 async function claim() {
   try {
-    console.log(account, airdropData.value, airdropData.proof);
+
     await src.methods
       .claim(airdropData.value, airdropData.proof)
       .estimateGas({ from: account }, async function (error, gasAmount) {
-        if (error) {
+        if (error) {          
           alert(error.toString());
         } else {
           await src.methods
@@ -160,7 +176,11 @@ async function claim() {
           await show_dashboard();
         }
       });
-  } catch (e) {
+  } catch (e) {    
+
+    console.log(e);
     alert("Error: Not possible to claim, please contact us");
   }
 }
+
+app_connect();
